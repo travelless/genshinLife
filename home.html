@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>记录原神生活</title>
+  <link rel="stylesheet" href="top-barrer.css">
+</head>
+<body>
+  <div class="showhome">
+    <!-- 顶部导航条 -->
+    <div class="home">
+      <div class="top-barrer">
+        <div class="icon">
+          <!-- <img src="@/assets/logo.png" />
+          <img src="@/assets/X.png" class="ccfLogo" />
+          <img src="@/assets/CCFlogo.png" /> -->
+        </div>
+        <div class="right-info">
+          <li class="navshow"><a href="home.html">主页</a></li>
+          <li class="navshow"><a href="collection.html">图鉴</a></li>
+          <li class="navshow"><a href="coser.html">周边</a></li>
+          <li class="navshow"><a href="discussion.html">论坛</a></li>
+          <li class="navshow"><a href="self.html">个人空间</a></li>
+          <li class="navshow"><a href="manager.html">管理员界面</a></li>
+        </div>
+      </div>
+      <div class="page">
+        <!-- <div class="carouselChart">轮播图</div> -->
+        <div class="leftPart">
+            <ul class="newList">
+              <li class="news">
+                <div class="title">「回应心意之舞」——《原神》新角色：妮露分享H5正式上线</div>
+                <div class="into"> 大家喜欢看妮露的演出，妮露也喜欢给大家呈现最美的舞蹈。</div>
+                <img src="./img/miYo.png" alt="神里凌华">
+              </li>
+              <li class="news">
+                <div class="title">「回应心意之舞」——《原神》新角色：妮露分享H5正式上线</div>
+                <div class="into"> 大家喜欢看妮露的演出，妮露也喜欢给大家呈现最美的舞蹈。</div>
+                <img src="./img/miYo.png" alt="神里凌华">
+              </li>
+              <li class="news">
+                <div class="title">「回应心意之舞」——《原神》新角色：妮露分享H5正式上线</div>
+                <div class="into"> 大家喜欢看妮露的演出，妮露也喜欢给大家呈现最美的舞蹈。</div>
+                <img src="./img/miYo.png" alt="神里凌华">
+              </li>
+              <li class="news">
+                <div class="title">「回应心意之舞」——《原神》新角色：妮露分享H5正式上线</div>
+                <div class="into"> 大家喜欢看妮露的演出，妮露也喜欢给大家呈现最美的舞蹈。</div>
+                <img src="./img/miYo.png" alt="神里凌华">
+              </li>
+            </ul>
+        </div>
+        <div class="rightPart">
+          <div class="link">
+            <div class="miYo">
+              <a href="https://bbs.mihoyo.com/ys" targert="view_frame" class="imgName">
+                <img src="./img/miYo.png" alt="米游社" class="img1">
+              </a>
+              <a href="https://bbs.mihoyo.com/ys" targert="view_frame" class="imgName">
+                <img src="./img/offical.jpeg" alt="miHoyo" class="img2">
+              </a>
+            </div>
+          </div>
+          <div class="content">更新资讯</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .news>img{ 
+    width: 300px;
+    height: 150px;
+  }
+  .newList{ 
+    width: 100%;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+  }
+  .news{ 
+    display: flex;
+    flex-direction: column;
+    margin: 5vh 5vh;
+    margin-top: 3vh;
+    width: 80%;
+    height: 30%;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
+  }
+  .img1{ 
+    transform: scale(40%);
+    position: absolute;
+    /* width: 170%; */
+    /* bottom: -20%; */
+    right: -110%;
+    background: red;
+  }
+  .img2{ 
+    transform: scale(40%);
+    position: absolute;
+    /* height: 240%; */
+    bottom: -700%;
+    left: 150%;
+    background: red;
+  }
+  .imgName{ 
+    /* background: black; */
+    width: 30%;
+    height: 10%;
+    position: relative;
+    top: 15%;
+    left: 10%;
+  }
+  .miYo{
+    background: pink;
+    height: 100%; 
+  }
+  .leftPart{ 
+    position: relative;
+    top: 10vh;
+    width: 40%;
+    right: 5%;
+    /* background: blue; */
+  }
+  .rightPart{ 
+    position: relative;
+    top: -10vh;
+    width: 20%;
+    left: 5%;
+    /* box-shadow: 0px 0px 10px rgba(0,0,0,0.3); */
+  }
+  .home {
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    background: rgba(255, 255, 255, 0);
+    flex-direction: column;
+  }
+  .page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* background: blue; */
+    /* flex-direction: column; */
+  }
+  /* 轮播图暂时未设置
+  .carouselChart{ 
+    position: relative;
+    top: 5vh;
+    background: black;
+    box-shadow: 0px 2px 2px 2px rgba(0,0,0,.2);
+  } */
+  .link{ 
+    position: relative;
+    top: 5vh;
+    height: 20vh;
+    /* background: black; */
+    box-shadow: 0px 2px 2px 2px rgba(0,0,0,.2);
+    margin-top: 5vh;
+  }
+  .content{ 
+    margin-top: 5vh;
+    height: 40vh;
+    position: relative;
+    top: 5vh;
+    /* background: black; */
+    box-shadow: 0px 2px 2px 2px rgba(0,0,0,.2);
+  }
+</style>
+<script>
+  var btn = document.querySelector("#btn")
+  var name = localStorage.getItem("name")
+  btn.onclick = function() {
+    console.log(name)
+  }
+  // console.log(name)
+  document.querySelector(".self").innerHTML = name
+</script>
+</html>

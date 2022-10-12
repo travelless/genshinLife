@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>论坛</title>
+  <link rel="stylesheet" href="top-barrer.css">
+</head>
+<body>
+  <div class="discussion">
+    <div class="top-barrer">
+      <div class="icon">
+        <!-- <img src="@/assets/logo.png" />
+        <img src="@/assets/X.png" class="ccfLogo" />
+        <img src="@/assets/CCFlogo.png" /> -->
+      </div>
+      <div class="right-info">
+        <li class="navshow"><a href="home.html">主页</a></li>
+        <li class="navshow"><a href="collection.html">图鉴</a></li>
+        <li class="navshow"><a href="coser.html">周边</a></li>
+        <li class="navshow"><a href="discussion.html">论坛</a></li>
+        <li class="navshow"><a href="self.html">个人空间</a></li>
+      </div>
+    </div>
+    <!-- 设置评论区功能 -->
+  <div class="outer">
+    <div class="outer-top">
+      <div>昵称:刘宇飞</div>
+      <div>邮箱:2022742378@qq.com</div>
+      <div>网址:wwww.hello.com</div>
+    </div>
+      <!-- 用户提交的姓名 -->
+      <div class="head">
+        <span>用户：</span><input type="text" id="userName">
+      </div>
+      <!-- 用户提交的内容 -->
+      <textarea name="" id="userWords" cols="30" rows="10" placeholder="欢迎评论"></textarea>
+      <div class="word_footer">
+        <span class="wordsNum">还可以输入140个字</span>
+        <button id="btn">发布</button>
+      </div>
+      <!-- 储存提交问题的容器 -->
+      <div class="con">来发表评论吧</div>
+      <ul id="myList">
+          
+      </ul>
+  </div>
+  </div>
+  
+</body>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.outer{ 
+  width: 100%;
+  text-align: center;
+}
+.outer-top{ 
+  margin: auto;
+  margin-top: 5%;
+  width: 70%;
+  display: flex;
+  /* background: black; */
+}
+.outer-top > *{
+  margin:auto;
+}
+.head{ 
+  width: 70%;
+  margin-top: 1%;
+  /* background: */
+}
+#userWords{
+  resize: none;
+  width: 70%;
+  margin-left: 10%;
+  margin-top: 1%;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+  font-size: 20px;
+  padding: 15px;
+  /* &::placeholder{
+    color: #999;
+  } */
+}
+#btn{
+  width: 8%;
+  height: 38px;
+  border-radius: 19px;
+  border: none;
+  outline: none;
+  background-color: rgba(69, 178, 233, 0.761);
+  margin-top: -4.5%;
+}
+#userName{
+  margin-bottom: 8px;
+  width: 30%;
+  /* border-bottom: 1px black solid; */
+}
+</style>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>管理员页面</title>
+  <link rel="stylesheet" href="top-barrer.css">
+</head>
+<body>
+  <div class="manager">
+    <div class="top-barrer">
+      <div class="icon">
+        <!-- <img src="@/assets/logo.png" />
+        <img src="@/assets/X.png" class="ccfLogo" />
+        <img src="@/assets/CCFlogo.png" /> -->
+      </div>
+      <div class="right-info">
+        <li class="navshow"><a href="home.html">主页</a></li>
+        <li class="navshow"><a href="collection.html">图鉴</a></li>
+        <li class="navshow"><a href="coser.html">周边</a></li>
+        <li class="navshow"><a href="discussion.html">论坛</a></li>
+        <li class="navshow"><a href="self.html">个人空间</a></li>
+        <li class="navshow"><a href="manager.html">管理员界面</a></li>
+      </div>
+    </div>
+    <div class="form">
+      <div class="collection-role">
+        <div class="title">角色图鉴</div>
+        <div class="structure">
+          <div class="features">
+            <label>角色名称</label>
+            <input type="text" id="name">
+          </div>
+          <div class="features">
+            <label>生命值</label>
+            <input type="text" id="name">
+          </div>
+        </div>
+        <div class="structure">
+          <div class="features">
+            <label>攻击力</label>
+            <input type="text" id="name">
+          </div>
+          <div class="features">
+            <label>防御力</label>
+            <input type="text" id="name">
+          </div>
+        </div>
+        <div class="structure">
+          <div class="features">
+            <label>暴击率</label>
+            <input type="text" id="name">
+          </div>
+          <div class="features">
+            <label>暴击伤害</label>
+            <input type="text" id="name">
+          </div>
+        </div>
+        <div class="structure">
+          <div class="features">
+            <label>元素精通</label>
+            <input type="text" id="name">
+          </div>
+          <div class="features">
+            <label>治疗加成</label>
+            <input type="text" id="name">
+          </div>
+        </div>
+        <div class="structure">
+          <div class="features">
+            <label>受治疗加成</label>
+            <input type="text" id="name">
+          </div>
+          <div class="features">
+            <label>元素充能效率</label>
+            <input type="text" id="name">
+          </div>
+        </div>
+        <div class="structure">
+          <div class="features">
+            <label for="">增伤</label>
+            <select name="" id="">
+              <option value="">火元素伤害加成</option>
+              <option value="">水元素伤害加成</option>
+              <option value="">岩元素伤害加成</option>
+              <option value="">冰元素伤害加成</option>
+              <option value="">草元素伤害加成</option>
+              <option value="">风元素伤害加成</option>
+              <option value="">物理伤害加成</option>
+            </select>
+            <input type="text">
+          </div>
+          <div class="features">
+            <label>角色头像</label>
+            <input type="file" id="name">
+          </div>
+        </div>
+      </div>
+      <div class="leadNews">
+        <div class="title">主页资讯</div>
+        <div class="structure">
+          <div class="features">
+            <label>资讯简介</label>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+          </div>
+          <div class="features">
+            <label>资讯封面</label>
+            <input type="file" id="name">
+          </div>
+        </div>
+        <div class="features">
+          <div class="features">
+            <label>资讯主要内容</label>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="coserPost">
+        
+      </div>
+    </div>
+  </div>
+</body>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.structure{ 
+  margin: 2% 5%;
+  display: flex;
+}
+.features{ 
+  flex: 1;
+}
+.from{ 
+  text-align: center;
+}
+.title{ 
+  margin-top: 2vh;
+  text-align: center;
+}
+.collection-role,.leadNews{ 
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+  width: 70%;
+  margin-left: 15%;
+  margin-top: 5%;
+}
+</style>
+<script>
+  var submit = document.querySelector("#submit")
+  var check = document.querySelector("#check")
+  submit.onclick = function() {
+    var name = document.querySelector("#name").value
+    localStorage.setItem('name',name)
+  }
+</script>
+</html>
