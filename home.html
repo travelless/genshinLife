@@ -5,133 +5,476 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>记录原神生活</title>
-  <link rel="stylesheet" href="top-barrer.css">
+  <link rel="stylesheet" href="./css/top-barrer.css">
+  <script src="./js/jq.js"></script>
+  <script src="./js/cookie.js"></script>
+  <script src="./js/top-barrer.js"></script>
+  <link rel="stylesheet" href="css/loding.css">
 </head>
 <body>
   <div class="showhome">
-    <!-- 顶部导航条 -->
+
     <div class="home">
+          <!-- 顶部导航条 -->
       <div class="top-barrer">
-        <div class="icon">
-          <!-- <img src="@/assets/logo.png" />
-          <img src="@/assets/X.png" class="ccfLogo" />
-          <img src="@/assets/CCFlogo.png" /> -->
-        </div>
         <div class="right-info">
-          <li class="navshow"><a href="home.html">主页</a></li>
-          <li class="navshow"><a href="collection.html">图鉴</a></li>
-          <li class="navshow"><a href="coser.html">周边</a></li>
-          <li class="navshow"><a href="discussion.html">论坛</a></li>
-          <li class="navshow"><a href="self.html">个人空间</a></li>
-          <li class="navshow"><a href="manager.html">管理员界面</a></li>
+          <li class="navshow"><a to="home.html" where="in">主页</a></li>
+          <li class="navshow"><a to="collection.html" where="in">图鉴</a></li>
+          <li class="navshow"><a to="discussion.html" where="in">论坛</a></li>
+          <li class="navshow"><a to="manager.html" where="in">管理员界面</a></li>
+          <li class="navshow"><a id="test">test</a></li>
+        </div>
+        <div class="top-barrer-user">
+          <div id="userSpace"></div>
+          <div class="userIcon"></div>
+          <div class="downLine"></div>
         </div>
       </div>
+      <!-- 轮播图 -->
+      <!-- <div class="carouselChart">
+        <div class="imgs">
+          <div class="imgitem">
+            <img src="img/miYo.png">
+          </div>
+          <div class="imgitem">
+            <img src="img/nilu.jpg">
+          </div>
+          <div class="imgitem">
+            <img src="img/offical.jpeg">
+          </div>
+          <div class="imgitem">
+            <img src="img/pic1.jpg">
+          </div>
+        
+          <div class="imgitem">
+            <img src="img/pic2.jpg">
+          </div>
+          <div class="imgitem">
+            <img src="img/t2.png">
+          </div>
+          <div class="imgitem">
+            <img src="img/t3.png">
+          </div>
+          <div class="imgitem">
+            <img src="img/t4.png">
+          </div>
+          
+        </div>
+        <button id="pre" type="button">上</button>
+        <button id="next" type="button">下</button>
+      </div> -->
       <div class="page">
-        <!-- <div class="carouselChart">轮播图</div> -->
         <div class="leftPart">
             <ul class="newList">
-              <li class="news">
-                <div class="title">「回应心意之舞」——《原神》新角色：妮露分享H5正式上线</div>
-                <div class="into"> 大家喜欢看妮露的演出，妮露也喜欢给大家呈现最美的舞蹈。</div>
-                <img src="./img/miYo.png" alt="神里凌华">
-              </li>
-              <li class="news">
-                <div class="title">「回应心意之舞」——《原神》新角色：妮露分享H5正式上线</div>
-                <div class="into"> 大家喜欢看妮露的演出，妮露也喜欢给大家呈现最美的舞蹈。</div>
-                <img src="./img/miYo.png" alt="神里凌华">
-              </li>
-              <li class="news">
-                <div class="title">「回应心意之舞」——《原神》新角色：妮露分享H5正式上线</div>
-                <div class="into"> 大家喜欢看妮露的演出，妮露也喜欢给大家呈现最美的舞蹈。</div>
-                <img src="./img/miYo.png" alt="神里凌华">
-              </li>
-              <li class="news">
-                <div class="title">「回应心意之舞」——《原神》新角色：妮露分享H5正式上线</div>
-                <div class="into"> 大家喜欢看妮露的演出，妮露也喜欢给大家呈现最美的舞蹈。</div>
-                <img src="./img/miYo.png" alt="神里凌华">
-              </li>
+              <a href="https://https://bbs.mihoyo.com/ys/article/31802585" class="news">
+                <div class="picBox">
+                  <img src="./img/pic1.jpg" alt="神里凌华" class="img">
+                </div>
+                <div class="fontBox">
+                  <div class="title">【转发抽奖】刻晴生日活动开启！</div>
+                  <div class="info"> 
+                    转发抽奖 姆，旅行者们好~今天阳光真好，酱酱在璃月港附近散步姆~欸，那边的人是旅行者和白乎乎？似乎还有打斗的声音！发生什么事了？酱酱这就去看...</div>
+                  <div class="time">11-20</div>
+                </div>
+              </a>
+              <a href="https://https://bbs.mihoyo.com/ys/article/31703293" class="news">
+                <div class="picBox">
+                  <img src="./img/pic2.jpg" alt="神里凌华" class="img">
+                </div>
+                <div class="fontBox">
+                  <div class="title">【有奖活动】3.2版本第二期话题活动开启！发帖赢原石~</div>
+                  <div class="info"> 
+                    姆，旅行者们好呀~
+
+                    这一次和大家见面的是八重神子和达达利亚！快来和酱酱一起参加话题活动吧(￣▽￣)～</div>
+                  <div class="time">11-18</div>
+                </div>
+              </a>
+              <a href="https://bbs.mihoyo.com/ys/article/31700824" class="news">
+                <div class="picBox">
+                  <img src="./img/pic3.jpg" alt="神里凌华" class="img">
+                </div>
+                <div class="fontBox">
+                  <div class="title">米游币抽抽乐-原神专场现已开启！</div>
+                  <div class="info"> 
+                   米游币抽抽乐-原神专场现已开启！本期活动时间：2022/11/18 11:00-2022/11/20 23:59活动入口：1、旅行者可前往【米游社App-原神版区首页-抽抽乐】参与活动2、使用米游社App扫描下方...</div>
+                  <div class="time">11-18</div>
+                </div>
+              </a>
             </ul>
         </div>
+        <div class="midLine"></div>
         <div class="rightPart">
           <div class="link">
             <div class="miYo">
-              <a href="https://bbs.mihoyo.com/ys" targert="view_frame" class="imgName">
-                <img src="./img/miYo.png" alt="米游社" class="img1">
-              </a>
-              <a href="https://bbs.mihoyo.com/ys" targert="view_frame" class="imgName">
-                <img src="./img/offical.jpeg" alt="miHoyo" class="img2">
-              </a>
+              <a to="https://bbs.mihoyo.com/ys" where="out" targert="view_frame" class="imgBox"></a>
+              <a to="https://www.mihoyo.com" where="out" targert="view_frame" class="imgBox"></a>
             </div>
           </div>
-          <div class="content">更新资讯</div>
+          <div class="rightPart-bottom">
+            <div class="warning">
+              <div class="row">
+                <div class="text1">健康游戏忠告：</div>
+              </div>
+              <div class="row">
+                <div class="text">抵制不良游戏，拒绝盗版游戏</div>
+              </div>
+              <div class="row">
+                <div class="text">注意自我保护，谨防上当受骗</div>
+              </div>
+              <div class="row">
+                <div class="text">适当游戏益脑，沉迷游戏伤身</div>
+              </div>
+              <div class="row">
+                <div class="text">合理安排时间，享受健康生活</div>
+              </div>
+            </div>
+            <div class="downLoad">
+              <a to="https://bbs.mihoyo.com" where="out" targert="view_frame" class="imgBox"></a>
+            </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="loading">
+      <div id="loading-center">
+        <div id="loading-center-absolute">
+          <div class="object" id="object_one"></div>
+          <div class="object" id="object_two"></div>
+          <div class="object" id="object_three"></div>
+          <div class="object" id="object_four"></div>
+          <div class="object" id="object_five"></div>
+          <div class="object" id="object_six"></div>
+          <div class="object" id="object_seven"></div>
+          <div class="object" id="object_eight"></div>
+          <div class="object" id="object_big"></div>
         </div>
       </div>
     </div>
   </div>
 </body>
+</html>
+
+
+<script>
+  var btn = document.querySelector("#btn")
+  var name = localStorage.getItem("name")
+  var newListNum = 1;
+  var newList = document.querySelector(".newList")
+  var news = document.querySelector(".news")
+  var submit = document.querySelector("#submit")
+  var replace = document.querySelector("#replace")
+  var sayWhat = document.querySelector("#sayWhat")
+  var sayPlace = document.querySelector(".sayPlace")
+  var userName = getCookie('userName')
+  // submit.onclick = function(){
+  //   if(sayWhat.value){
+  //     var li=document.createElement('li')
+  //     li.innerHTML = '<div class="sayWhat">'+ userName + sayWhat.value +'</div><button id="replace">x</button>'
+  //     sayPlace.appendChild(li)
+  //     console.log($(li).children("button"))
+  //     $(li).children("button").on("click",()=>{
+  //       $(li).remove()
+  //     })
+  //     $(".say").style.height += $(li).style.height
+  //   }else{
+  //     window.alert("请输入内容")
+  //   }
+  // }
+
+  window.onload = function(){
+    //自适应高度
+    newListNum = $(".newList a").length
+    newList.style.height = (170 * newListNum + 40) + 'px'
+
+    cookieCheck()
+    topTo()
+
+  }
+
+  $("#test").click(()=>{
+    console.log()
+  })
+  // btn.onclick = function() {
+  //   addLi()
+  //   newListNum++
+  //   newList.style.height = (170 * newListNum + 40) + 'px'
+  // }
+  // function addLi() {
+  //   var ul = document.querySelector(".newList")
+  //   var newLi = document.createElement("li")
+  //   var newPicBox = document.createElement("div")
+  //   var newFontBox = document.createElement("div")
+  //   var newImg = document.createElement("img")
+  //   var newTitle = document.createElement("div")
+  //   var newInfo = document.createElement("div")
+
+  //   newLi.className += 'news'
+  //   newPicBox.className += 'picBox'
+  //   newFontBox.className += 'fontBox'
+  //   newTitle.className += 'title'
+  //   newInfo.className += 'info'
+
+  //   newFontBox.appendChild(newTitle)
+  //   newFontBox.appendChild(newInfo)
+  //   newPicBox.appendChild(newImg)
+  //   newLi.appendChild(newPicBox)
+  //   newLi.appendChild(newFontBox)
+  //   ul.appendChild(newLi)
+
+
+  // }
+
+
+  // console.log(name)
+  // document.querySelector(".self").innerHTML = name
+</script>
+
 <style>
   *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-  .news>img{ 
-    width: 300px;
-    height: 150px;
+  .warning {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    top: 2vh;
+    width: 100%;
+    /* height: 10vh; */
+    background-color: aliceblue;
+    text-align: center;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    font-weight: lighter;
+    color: #4ea1d9;
+    background-image: linear-gradient(
+      -135deg,
+      #418ae0,
+      #56a0d8,
+      #dc8bc3,
+      #56a0d8,
+      #418ae0,
+      #56a0d8,
+      #dc8bc3,
+      #56a0d8,
+      #418ae0
+    );
+    -webkit-text-fill-color: rgba(0, 0, 0, 0);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    user-select: none;
+    background-size: 200% 100%;
+  }
+  .row {
+    margin-left: 5%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 80%;
+    transition: all 1s;
+  }
+  .text{
+    /* width: 100vh; */
+    margin-left: 5vh;
+    /* justify-content: end; */
+    /* text-align: right; */
+  }
+  .text1 {
+    /* width: 100vh; */
+    margin-right: 18vh;
+  }
+  label{
+    color: #000000;
+			/* padding: 10px; */
+			text-decoration: none;
+			font-size: 16px;
+			/* background-color: #dce1e6; */
+  }
+  .fontBox>.info{
+    color: rgba(0,0,0,.6);
+    font-size: 14.5px;
+  }
+  #sayWhat{
+    /* width: 400px; */
+    outline: 0;
+    border: 1px solid #a0b3d6;
+    box-shadow: 1px 3px 8px 0px rgba(59,142,234,.3);
+    transition: 2s;
+    resize: none;
+  }
+  #sayWhat:focus{
+    transition: 2s;
+    box-shadow:inset 0 1px 3px rgba(0,0,0,0.1),0 0 8px rgba(82,168,236,0.6);
+  }
+  #replace{
+    width: 8%;
+    /* margin: auto; */
+    height: 20px;
+    /* border-radius: 19px; */
+    border: none;
+    outline: none;
+    background-color: rgba(82,168,236);
+    /* margin-top: -4.5%; */
+  }
+  #submit{
+    width: 8%;
+    height: 38px;
+    border-radius: 19px;
+    border: none;
+    outline: none;
+    background-color: rgba(69, 178, 233, 0.761);
+    margin-top: -4.5%;
+  }
+  .title{
+    text-align: center;
+  }
+  .fontBox>.title{
+    margin: 5px;
+    font-weight: bold;
+  }
+#sayWhat{
+  position: relative;
+  width: 80%;
+  left: 10%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#submit{
+  width: 40px;
+  position: relative;
+  margin: auto;
+}
+.sayPlace{
+  list-style-type:none;
+  height: 200px;
+}
+.sayPlace>li{
+  position: relative;
+  left: 10%;
+  width: 75%;
+  display: flex;
+  margin-top: 10px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+li>button{
+  position: absolute;
+  right: -10%;
+}
+li>.sayWhat{
+  position: relative;
+}
+.say{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 30px;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.8);
+  /* margin-left: 10%; */
+}
+  .picBox{
+    padding: 10px;
+  }
+  .picBox>img{
+    width: 200px;
   }
   .newList{ 
+    position: relative;
     width: 100%;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    /* box-shadow: 0px 0px 10px rgba(0,0,0,0.3); */
+    height: 210px;
+    padding-top: 10px;
+    padding-bottom: 30px;
   }
   .news{ 
     display: flex;
-    flex-direction: column;
-    margin: 5vh 5vh;
-    margin-top: 3vh;
-    width: 80%;
-    height: 30%;
-    box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
-  }
-  .img1{ 
-    transform: scale(40%);
-    position: absolute;
-    /* width: 170%; */
-    /* bottom: -20%; */
-    right: -110%;
-    background: red;
-  }
-  .img2{ 
-    transform: scale(40%);
-    position: absolute;
-    /* height: 240%; */
-    bottom: -700%;
-    left: 150%;
-    background: red;
-  }
-  .imgName{ 
-    /* background: black; */
-    width: 30%;
-    height: 10%;
     position: relative;
-    top: 15%;
-    left: 10%;
+    margin-left: 10%;
+    width: 80%;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
+    transition: 1s;
+    height: 150px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+  }
+  .news:hover{
+    box-shadow: 3px 3px 4px 3px rgba(59,142,234,.4);
+  }
+  .img{ 
+    height: 100px;
+    width: 100px;
+    background: red;
+    border-radius: 10px;
+  }
+  .imgBox{ 
+    position: relative;
+    height: 60px;
+    width: 60px;
+    margin-left: 10%;
+    margin-top: 10%;
+    background-size: 100% 100%;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+    border-radius: 10px;
+  }
+  .imgBox:nth-of-type(1){
+    background-image: url(./img/miYo.png);
+  }
+  .imgBox:nth-of-type(2){
+    background-image: url(./img/offical.jpeg);
+  }
+  .downLoad>.imgBox{
+    background-image: url(./img/QQ图片20221127145642.png);
+    position: relative;
+    height: 80px;
+    width: 200px;
+    margin-left: 0%;
+    margin-top: 10%;
+    background-size: 100% 100%;
+    box-shadow: none;
+    border-radius: 10px;
+  }
+  .downLoad{
+    position: relative;
+    display: flex; 
+    width: 75%;
+    margin-left: 25%;
   }
   .miYo{
-    background: pink;
-    height: 100%; 
+    /* background-color:gray; */
+    position: relative;
+    display: flex; 
+    /* width: 50%; */
+    margin-left: 20%;
   }
   .leftPart{ 
-    position: relative;
-    top: 10vh;
-    width: 40%;
-    right: 5%;
+    position: absolute;
+    top: 17vh;
+    width: 45%;
+    left: 10%;
     /* background: blue; */
   }
+  .midLine{
+    top: 16vh;
+    border:2px rgba(0,0,0,.5);
+    height: 60vh;
+    position: absolute;
+    right: 40%;
+    /* width: 1px; */
+    border-style: none solid none none;
+  }
   .rightPart{ 
-    position: relative;
-    top: -10vh;
-    width: 20%;
-    left: 5%;
+    position: absolute;
+    top: 17vh;
+    width: 34%;
+    right: 5%;
     /* box-shadow: 0px 0px 10px rgba(0,0,0,0.3); */
   }
   .home {
@@ -145,15 +488,8 @@
     flex-direction: column;
   }
   .page {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    /* background: blue; */
-    /* flex-direction: column; */
   }
   /* 轮播图暂时未设置
   .carouselChart{ 
@@ -163,12 +499,10 @@
     box-shadow: 0px 2px 2px 2px rgba(0,0,0,.2);
   } */
   .link{ 
+    /* display: flex; */
     position: relative;
-    top: 5vh;
-    height: 20vh;
-    /* background: black; */
-    box-shadow: 0px 2px 2px 2px rgba(0,0,0,.2);
-    margin-top: 5vh;
+    /* height: 20vh; */
+    margin:1vh;
   }
   .content{ 
     margin-top: 5vh;
@@ -178,14 +512,13 @@
     /* background: black; */
     box-shadow: 0px 2px 2px 2px rgba(0,0,0,.2);
   }
-</style>
-<script>
-  var btn = document.querySelector("#btn")
-  var name = localStorage.getItem("name")
-  btn.onclick = function() {
-    console.log(name)
+  .time{
+    position:absolute;
+    right: 20px;
+    bottom: 10px;
+    font-size: 10px;
+    color: rgba(0,0,0,.4);
   }
-  // console.log(name)
-  document.querySelector(".self").innerHTML = name
-</script>
-</html>
+</style>
+
+

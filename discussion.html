@@ -5,35 +5,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>论坛</title>
-  <link rel="stylesheet" href="top-barrer.css">
+  <link rel="stylesheet" href="./css/top-barrer.css">
+  <script src="./js/jq.js"></script>
+  <script src="./js/cookie.js"></script>
+  <script src="./js/top-barrer.js"></script>
+  <link rel="stylesheet" href="css/loding.css">
+  <!-- 信息提示 -->
+  <script src="js/layerMsg.js" type="text/javascript" charset="utf-8"></script>
+  <link rel="stylesheet" type="text/css" href="css/layerMsg.css"/>
 </head>
 <body>
   <div class="discussion">
     <div class="top-barrer">
-      <div class="icon">
-        <!-- <img src="@/assets/logo.png" />
-        <img src="@/assets/X.png" class="ccfLogo" />
-        <img src="@/assets/CCFlogo.png" /> -->
-      </div>
       <div class="right-info">
-        <li class="navshow"><a href="home.html">主页</a></li>
-        <li class="navshow"><a href="collection.html">图鉴</a></li>
-        <li class="navshow"><a href="coser.html">周边</a></li>
-        <li class="navshow"><a href="discussion.html">论坛</a></li>
-        <li class="navshow"><a href="self.html">个人空间</a></li>
+        <li class="navshow"><a to="home.html">主页</a></li>
+        <li class="navshow"><a to="collection.html">图鉴</a></li>
+        <li class="navshow"><a to="discussion.html">论坛</a></li>
+        <li class="navshow"><a to="manager.html">管理员界面</a></li>
+        <li class="navshow"><a id="test">test</a></li>
+      </div>
+      <div class="top-barrer-user">
+        <div id="userSpace"></div>
+        <div class="userIcon"></div>
+        <div class="downLine"></div>
       </div>
     </div>
     <!-- 设置评论区功能 -->
+    <!-- 设置评论区功能 -->
   <div class="outer">
-    <div class="outer-top">
-      <div>昵称:刘宇飞</div>
-      <div>邮箱:2022742378@qq.com</div>
-      <div>网址:wwww.hello.com</div>
-    </div>
-      <!-- 用户提交的姓名 -->
-      <div class="head">
-        <span>用户：</span><input type="text" id="userName">
-      </div>
       <!-- 用户提交的内容 -->
       <textarea name="" id="userWords" cols="30" rows="10" placeholder="欢迎评论"></textarea>
       <div class="word_footer">
@@ -43,11 +42,32 @@
       <!-- 储存提交问题的容器 -->
       <div class="con">来发表评论吧</div>
       <ul id="myList">
-          
-      </ul>
+        <!-- <li>
+          <div class="right">
+            <div class="name"><div class="listNum"> #3&nbsp;&nbsp;&nbsp; </div>userName: </div>
+            <div class="words">userWords.value</div>
+            <div class="time">11.8日 14:40</div>
+            <button class="remove">删除</button>
+          </div>
+        </li> -->
+      </ul> 
+    </div>
   </div>
+  <div id="loading">
+    <div id="loading-center">
+      <div id="loading-center-absolute">
+        <div class="object" id="object_one"></div>
+        <div class="object" id="object_two"></div>
+        <div class="object" id="object_three"></div>
+        <div class="object" id="object_four"></div>
+        <div class="object" id="object_five"></div>
+        <div class="object" id="object_six"></div>
+        <div class="object" id="object_seven"></div>
+        <div class="object" id="object_eight"></div>
+        <div class="object" id="object_big"></div>
+      </div>
+    </div>
   </div>
-  
 </body>
 <style>
 *{
@@ -55,54 +75,259 @@
   padding: 0;
   box-sizing: border-box;
 }
-.outer{ 
-  width: 100%;
+.remove {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+  padding: 4px 8px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 5vh;
 }
-.outer-top{ 
-  margin: auto;
-  margin-top: 5%;
-  width: 70%;
+ 
+.remove:hover {
+    background-color: #008CBA;
+    color: white;
+}
+.listNum{
+  font-weight: normal;
+  color: #999;
+}
+.outer {
+  background: rgba(255, 255, 255, 0.416);
+  box-shadow: 5 5 10px rgba(0, 0, 0, 0.3);
+  border-radius: 25px;
+  width: 80%;
+  /* overflow: hidden; */
+  margin: 50px 10%;
+  justify-content: space-evenly;
+}
+.outer .outer-top {
+  width: 80%;
   display: flex;
-  /* background: black; */
+  font-size: 16px;
+  margin: 1% 10%;
 }
-.outer-top > *{
-  margin:auto;
+.outer .outer-top div {
+  width: 50%;
 }
-.head{ 
-  width: 70%;
-  margin-top: 1%;
-  /* background: */
+.outer .head {
+  font-weight: 400;
+  font-size: 18px;
+  width: 100%;
+  display: flex;
 }
-#userWords{
-  resize: none;
-  width: 70%;
+.outer .head span {
+  width: 6%;
   margin-left: 10%;
-  margin-top: 1%;
+}
+.outer .head #userName {
+  margin-bottom: 8px;
+  width: 30%;
+  border-bottom: 1px black solid;
+}
+.outer .head #userName:focus {
+  border-bottom: 1px rgba(212, 42, 42, 0.887) solid;
+}
+.outer #userWords {
+  resize: none;
+  width: 80%;
+  margin-left: 10%;
   outline: none;
   border: none;
   background-color: transparent;
   background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   font-size: 20px;
   padding: 15px;
-  /* &::placeholder{
-    color: #999;
-  } */
 }
-#btn{
+.outer #userWords::placeholder {
+  color: #999;
+}
+.outer .word_footer {
+  width: 80%;
+  margin-left: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+.outer .word_footer .wordsNum {
+  width: 20%;
+  height: 20px;
+}
+.outer .word_footer #btn {
   width: 8%;
   height: 38px;
   border-radius: 19px;
   border: none;
   outline: none;
   background-color: rgba(69, 178, 233, 0.761);
+  color: azure;
   margin-top: -4.5%;
+  margin-right: 5vh;
+  transition: 0.5s;
 }
-#userName{
-  margin-bottom: 8px;
-  width: 30%;
-  /* border-bottom: 1px black solid; */
+.outer .word_footer #btn:hover{
+  background-color: rgba(69, 178, 233);
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.7);
 }
+.outer .con {
+  width: 100%;
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+}
+.outer #myList {
+  width: 80%;
+  margin-left: 10%;
+  height: 300px;
+  margin-bottom: 30px;
+}
+.outer #myList li {
+  margin-top: 8px;
+  width: 100%;
+  /* overflow: hidden; */
+  display: flex;
+}
+.outer #myList li img {
+  width: 80px;
+  border-radius: 50%;
+}
+.outer #myList li .right {
+  width: 100%;
+  margin-left: 2%;  
+  height: 100%;
+  position: relative;
+  border-top: 1px solid rgb(139, 139, 139);
+  padding: 20px 0;
+}
+.name{
+  display: flex;
+  font-size: 15px;
+  /* color: #4370f5; */
+  font-weight: bolder;
+  /* height: 30px; */
+}
+.words{
+  font-size: 17px;
+  width: 75%;
+  margin-left: 4%;
+  padding: 8px 0;
+  line-height: 1.6;
+}
+.time{
+  font-size: 15px;
+  height: 20px;
+}
+
 </style>
 </html>
+
+<script>
+  // var sayWhat = document.querySelector(".sayWhat")
+  // var submit = document.querySelector("#submit")
+  // var del = $(".del")
+  // submit.onclick = ()=>{
+  //   if(sayWhat.value){
+  //     var item = $("#sayPlace").append(`<li>
+  //                                         <div class="content">${sayWhat.value}</div>
+  //                                         <button class="del">x</button>
+  //                                       </li>`)
+  //   }else{
+  //     window.alert("no!!")
+  //   }
+  // }
+  window.onload = function(){
+    topTo()
+    cookieCheck()
+
+
+      // 实现评论的功能
+    //1.获取各个元素的dom
+    let userName = getCookie('userName')
+    let userWords = document.querySelector("#userWords")
+    let wordsNum = document.querySelector(".wordsNum")
+    let btn = document.querySelector('#btn')
+    let myList = document.querySelector('#myList')
+
+
+
+    btn.onclick = function(){
+			if(userName){
+        if(userWords.value){
+          // 将创建好的li添加到ul中
+          let newLi = document.createElement('li');
+
+          var myDate = new Date;
+          var mon = myDate.getMonth() + 1; //获取当前月
+          var date = myDate.getDate(); //获取当前日
+          var h = myDate.getHours();//获取当前小时数(0-23)
+          var m = myDate.getMinutes();//获取当前分钟数(0-59)
+          var len =  $("#myList").children().length + 1
+
+          function getNow(s) {
+            return s < 10 ? '0' + s: s;
+          }
+
+          console.log($("#myList").children())
+          newLi.innerHTML = '<div class="right"><div class="name"><div class="listNum">#' + len +'&nbsp;&nbsp;&nbsp; </div>'+userName+':</div><div class="words">'+userWords.value+'</div><div class="time"></div><button class="remove">删除</button></div>';
+          
+          $(newLi).children(".right").children(".time").html(mon + "." + date + "日 " + getNow(h) + ':' + getNow(m))
+          
+          // $(".time").html(year + "年" + mon + "月" + date + "日" + weeks[week]);
+          //绑定删除操作
+          $(newLi).children(".right").children("button").click(()=>{
+            $(newLi).remove()
+          })
+          console.log($(newLi).children(".right").children(".time"))
+          if(myList.children.length != 0){
+            // console.log(myList.children);
+            myList.insertBefore(newLi,myList.firstElementChild);
+          }else{
+            myList.appendChild(newLi);
+          }
+          // 获取到插入的li的高度,再将li设置为0
+          let end = newLi.offsetHeight;
+          let start = 0;
+          let change = end - start;
+          let t = 0;
+          let maxT = 50;
+
+          // 元素添加完毕，清除输入框
+          userWords.value = '';
+          wordsNum.innerHTML = '还可以输入140个字';
+          let remBtn = myList.getElementsByTagName('a');
+        } else {
+          ErrMsg('请输入评论内容')
+        }
+        
+      } else {
+        ErrMsg('请登陆后再发表评论')
+      }
+    }
+
+
+
+    userWords.oninput = function(){
+      // 当两个输入框内容都不为空时，改变按钮颜色，可以点击
+      // 每次输入都获取内容长度，并计算剩余可输入字数
+      // console.log("name")
+      let wLength = 140 - userWords.value.length;
+      if(wLength <= 0){
+          wLength = 0;
+          // userWords.disabled = true;
+          userWords.value.innerHTML = userWords.value.substring(0,140);
+      }
+      wordsNum.innerHTML = '还可以输入' + wLength + '个字';
+    }
+  }
+
+   
+</script>

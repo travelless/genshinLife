@@ -5,23 +5,26 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>管理员页面</title>
-  <link rel="stylesheet" href="top-barrer.css">
+  <link rel="stylesheet" href="./css/top-barrer.css">
+  <script src="./js/jq.js"></script>
+  <script src="./js/cookie.js"></script>
+  <script src="./js/top-barrer.js"></script>
+  <link rel="stylesheet" href="css/loding.css">
 </head>
 <body>
   <div class="manager">
     <div class="top-barrer">
-      <div class="icon">
-        <!-- <img src="@/assets/logo.png" />
-        <img src="@/assets/X.png" class="ccfLogo" />
-        <img src="@/assets/CCFlogo.png" /> -->
-      </div>
       <div class="right-info">
-        <li class="navshow"><a href="home.html">主页</a></li>
-        <li class="navshow"><a href="collection.html">图鉴</a></li>
-        <li class="navshow"><a href="coser.html">周边</a></li>
-        <li class="navshow"><a href="discussion.html">论坛</a></li>
-        <li class="navshow"><a href="self.html">个人空间</a></li>
-        <li class="navshow"><a href="manager.html">管理员界面</a></li>
+        <li class="navshow"><a to="home.html">主页</a></li>
+        <li class="navshow"><a to="collection.html">图鉴</a></li>
+        <li class="navshow"><a to="discussion.html">论坛</a></li>
+        <li class="navshow"><a to="manager.html">管理员界面</a></li>
+        <li class="navshow"><a id="test">test</a></li>
+      </div>
+      <div class="top-barrer-user">
+        <div id="userSpace"></div>
+        <div class="userIcon"></div>
+        <div class="downLine"></div>
       </div>
     </div>
     <div class="form">
@@ -121,40 +124,65 @@
       </div>
     </div>
   </div>
+  <div id="loading">
+    <div id="loading-center">
+      <div id="loading-center-absolute">
+        <div class="object" id="object_one"></div>
+        <div class="object" id="object_two"></div>
+        <div class="object" id="object_three"></div>
+        <div class="object" id="object_four"></div>
+        <div class="object" id="object_five"></div>
+        <div class="object" id="object_six"></div>
+        <div class="object" id="object_seven"></div>
+        <div class="object" id="object_eight"></div>
+        <div class="object" id="object_big"></div>
+      </div>
+    </div>
+  </div>
 </body>
-<style>
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-.structure{ 
-  margin: 2% 5%;
-  display: flex;
-}
-.features{ 
-  flex: 1;
-}
-.from{ 
-  text-align: center;
-}
-.title{ 
-  margin-top: 2vh;
-  text-align: center;
-}
-.collection-role,.leadNews{ 
-  box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
-  width: 70%;
-  margin-left: 15%;
-  margin-top: 5%;
-}
-</style>
+
+
+</html>
+
+
 <script>
   var submit = document.querySelector("#submit")
   var check = document.querySelector("#check")
-  submit.onclick = function() {
-    var name = document.querySelector("#name").value
-    localStorage.setItem('name',name)
+  // submit.onclick = function() {
+  //   var name = document.querySelector("#name").value
+  //   localStorage.setItem('name',name)
+  // }
+  window.onload = function(){
+    cookieCheck()
+    topTo()
   }
 </script>
-</html>
+
+
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .structure{ 
+    margin: 2% 5%;
+    display: flex;
+  }
+  .features{ 
+    flex: 1;
+  }
+  .from{ 
+    text-align: center;
+  }
+  .title{ 
+    margin-top: 2vh;
+    text-align: center;
+  }
+  .collection-role,.leadNews{ 
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 5%;
+  }
+  </style>

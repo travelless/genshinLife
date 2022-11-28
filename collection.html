@@ -5,78 +5,101 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>图鉴</title>
-  <link rel="stylesheet" href="top-barrer.css">
+  <link rel="stylesheet" href="./css/top-barrer.css">
+  <script src="./js/jq.js"></script>
+  <script src="./js/cookie.js"></script>
+  <script src="./js/top-barrer.js"></script>
+  <link rel="stylesheet" href="css/loding.css">
 </head>
 <body>
   <div class="collection">
     <div class="top-barrer">
-      <div class="icon">
-        <!-- <img src="@/assets/logo.png" />
-        <img src="@/assets/X.png" class="ccfLogo" />
-        <img src="@/assets/CCFlogo.png" /> -->
-      </div>
       <div class="right-info">
-        <li class="navshow"><a href="home.html">主页</a></li>
-        <li class="navshow"><a href="collection.html">图鉴</a></li>
-        <li class="navshow"><a href="coser.html">周边</a></li>
-        <li class="navshow"><a href="discussion.html">论坛</a></li>
-        <li class="navshow"><a href="self.html">个人空间</a></li>
+        <li class="navshow"><a to="home.html">主页</a></li>
+        <li class="navshow"><a to="collection.html">图鉴</a></li>
+        <li class="navshow"><a to="discussion.html">论坛</a></li>
+      </div>
+      <div class="top-barrer-user">
+        <div id="userSpace"></div>
+        <div class="userIcon"></div>
+        <div class="downLine"></div>
       </div>
     </div>
     <div class="role">
       <div class="title">角色图鉴</div>
       <ul id="list">
-        <li class="content">
-          <img src="./img/miYo.png" alt="神里凌华">
-          <div class="name">神里凌华</div>
+        <li class="li">
+          <a href="showRole.html" class="img"></a>
+          <a href="showRole.html" class="name">神里凌华</a>
         </li>
-        <li class="content">
+        <li class="li">
           <img src="./img/miYo.png" alt="神里凌华">
           <div class="name">枫源万叶</div>
-        </li>
-        <li class="content">
-          <img src="./img/miYo.png" alt="神里凌华">
-          <div class="name">神里伶人</div>
-        </li>
-        <li class="content">
-          <img src="./img/miYo.png" alt="神里凌华">
-          <div class="name">香菱</div>
-        </li>
-        <li class="content">
-          <img src="./img/miYo.png" alt="神里凌华">
-          <div class="name">班尼特</div>
         </li>
       </ul>
     </div>
   </div>
+  <div id="loading">
+    <div id="loading-center">
+      <div id="loading-center-absolute">
+        <div class="object" id="object_one"></div>
+        <div class="object" id="object_two"></div>
+        <div class="object" id="object_three"></div>
+        <div class="object" id="object_four"></div>
+        <div class="object" id="object_five"></div>
+        <div class="object" id="object_six"></div>
+        <div class="object" id="object_seven"></div>
+        <div class="object" id="object_eight"></div>
+        <div class="object" id="object_big"></div>
+      </div>
+    </div>
+  </div>
 </body>
-<style>
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-.title{ 
-  text-align: center;
-}
-.role{ 
-  margin-left: 12.5%;
-  width: 75%;
-  margin-top: 2%;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
-  /* background: red; */
-}
-.content{ 
-  width: 20%;
-  margin: 2.5%;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
-  text-align: center;
-}
-#list{ 
-  display: flex;
-  flex-wrap: wrap;
-}
-</style>
+
 </html>
+
+
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .title{ 
+    text-align: center;
+  }
+  .img{
+    background: url(./img/nilu.jpg);
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+    border-radius: 10px;
+  }
+  .role{ 
+    margin-left: 12.5%;
+    width: 75%;
+    margin-top: 2%;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    /* background: red; */
+  }
+  .li{ 
+    width: 20%;
+    margin: 2.5%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+    text-align: center;
+    padding: 20px;
+  }
+  #list{ 
+    display: flex;
+    flex-wrap: wrap;
+  }
+  </style>
+  <script>
+    window.onload = function(){
+      cookieCheck()
+      topTo()
+    }
+  </script>

@@ -4,9 +4,341 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- jq库 -->
+  <script src="./js/jq.js"></script>
+  <!-- cookie库 -->
+  <script src="./js/cookie.js"></script>
+  <!-- 信息提示 -->
+  <script src="js/layerMsg.js" type="text/javascript" charset="utf-8"></script>
+  <link rel="stylesheet" type="text/css" href="css/layerMsg.css"/>
+  <!-- loding -->
+  <link rel="stylesheet" href="css/loding.css">
   <title>入口</title>
 </head>
 <body>
-  <a href="home.html">点击进入页面</a>
+  <div class="door">
+    <div class="login">
+      <div class="title" id="loginTitle">
+        WELCOME TO GENSHINLIFE
+      </div>
+      <div class="others">
+        <div class="icon">
+          <a href="" class="qq"></a>
+          <a href="" class="wx"></a>
+          <a href="" class="wb"></a>
+        </div>
+        <div class="iconFont">can not login by these</div>
+      </div>
+      <div class="input loginInput">
+        <input type="text" id="loginUserName" placeholder="username">
+        <input type="text" id="loginPassWord" placeholder="password">
+      </div>
+      <div class="btn">
+        <button id="login">LOGIN</button>
+      </div>
+      
+    </div>
+    <div class="registered">
+      <div class="title" id="registeredTitle">
+        NICE TO MEET YOU
+      </div>
+      <div class="others">
+        <div class="iconFont1">Registered here</div>
+        <div class="iconFont">Please enter your username and password</div>
+      </div>
+      <div class="input registeredInput">
+        <input type="text" id="registeredUserName" placeholder="username">
+        <input type="text" id="registeredPassWord" placeholder="password">
+      </div>
+      <div class="btn">
+        <button id="registered">REGISTERED</button>
+      </div>
+    </div>
+    <div id="loading">
+      <div id="loading-center">
+        <div id="loading-center-absolute">
+          <div class="object" id="object_one"></div>
+          <div class="object" id="object_two"></div>
+          <div class="object" id="object_three"></div>
+          <div class="object" id="object_four"></div>
+          <div class="object" id="object_five"></div>
+          <div class="object" id="object_six"></div>
+          <div class="object" id="object_seven"></div>
+          <div class="object" id="object_eight"></div>
+          <div class="object" id="object_big"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 </body>
 </html>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    transition: 1s;
+  }
+  input::placeholder{
+    color: rgb(160,165,168);
+  }
+  body{
+    overflow: hidden;
+  }
+  .door{
+    display: flex;
+  }
+  .registered{
+    height: 40vh;
+    margin-top: 20vh;
+    width: 17%;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+    padding: 5% 2%;
+    display: flex;
+    flex-direction: column;
+    transition: 1s;
+  }
+  .login{
+    position: relative;
+    height: 40vh;
+    transition: 1s;
+    margin-top: 20vh;
+    width: 33%;
+    margin-left: 20%;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+    padding: 5% 2%;
+    display: flex;
+    flex-direction: column;
+  }
+  .title{
+    text-align: center;
+    margin: 2.5% 0;
+    margin-top: 3vh;
+    font-size:x-large;
+    font-weight: bold;
+  }
+  #registeredTitle{
+    margin-top: 10vh;
+  }
+  .input{
+    display: flex;
+    flex-direction: column;
+  }
+  .input>input{
+    width: 50%;
+    height: 3vh;
+    position: relative;
+    left: 22.5%;
+    margin: 2.5% 0;
+    
+    outline-style: none ;
+    border: 1px solid #ccc; 
+    border-radius: 3px;
+    padding: 3px 8px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Microsoft soft";
+    transition: 0.5s;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 3px rgba(0,0,0,.3)
+  }
+  .input>input:focus{
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+  }
+  .iconFont{
+    font-size: 15px;
+    color: rgb(160,165,168);
+    text-align: center;
+    width: 100%;
+  }
+  .iconFont1{
+    font-size: 18px;
+    color: rgb(0,0,0);
+    text-align: center;
+    width: 100%;
+    margin-bottom: 3%;
+  }
+  /* .cookie{
+    display: flex;
+    position: relative;
+    left: 38%;
+    width: 30% ;
+    font-size: 15px;
+    color: rgb(160,165,168);
+    margin: 2.5% 0;
+  }
+  .cookie>input{
+    margin-left: 25%;
+    position: relative;
+    top: 4px;
+    width: 13px;
+    background: rgb(143, 188, 238);
+    border:1px solid #ccc;
+  } */
+  .btn>button{
+    position: relative;
+    width: 30%;
+    left: 33%;
+    border: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    color: white;
+    background-color: rgb(75,112,226);
+    /* box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.397); */
+    transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    border-radius: 15px;
+  }
+  button{
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    margin: 10px 0;
+  }
+  .btn>button:hover{
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 4px rgba(102,175,233)
+  }
+  .btn>button:active{
+    background-color: rgba(75,112,226,.7);
+  }
+  .others{
+    /* width: 50%; */
+    /* height: 3vh; */
+    /* position: relative;
+    left: 23%; */
+    margin: 2.5% 0;
+  }
+  .icon{
+    position: relative;
+    left: 25%;
+    width: 50%;
+    justify-content: space-around;
+    display: flex;
+    /* flex-flow: row; */
+  }
+  .qq{
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url(./img/QQ.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .wx{
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url(./img/wechat.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .wb{
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url(./img/wb.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .registeredInput{
+    display: none;
+  }
+  #registered{
+    display: none;
+  }
+</style>
+
+<script>
+  var loginUserName = $("#loginUserName")
+  var loginPassWord = $("#loginPassWord")
+  var registeredUserName = $("#registeredUserName")
+  var registeredPassWord = $("#registeredPassWord")
+  i=3
+  //呼出注册面板
+  $(".registered").mouseenter(()=>{
+    $(".login").css("width","17%")
+    $("#loginTitle").css("margin-top","10vh")
+    $(".loginInput").fadeOut()
+    $("#login").fadeOut()
+    
+    $(".registered").css("width","33%")
+    $("#registeredTitle").css("margin-top","1.5vh")
+    $(".registeredInput").fadeIn()
+    $("#registered").fadeIn()
+  })
+
+  //呼出登陆面板
+  $(".login").mouseenter(()=>{
+    $(".login").css("width","33%")
+    $("#loginTitle").css("margin-top","3vh")
+    $(".loginInput").fadeIn()
+    $("#login").fadeIn()
+    
+    $(".registered").css("width","17%")
+    $("#registeredTitle").css("margin-top","10vh")
+    $(".registeredInput").fadeOut()
+    $("#registered").fadeOut()
+  })
+
+  //登陆机制 存入cookie
+  $("#login").click(()=>{
+    //检验是否存在用户
+    if(loginUserName.val() in window.localStorage){
+      //检验密码是否正确
+      if(loginPassWord.val() === window.localStorage[loginUserName.val()]){
+        TrueMsg('登陆成功')
+        // setCookie('userState','online',1)
+        setCookie('userName',loginUserName.val(),1)
+        $("#loading").css('top','0')
+        setTimeout(()=>{
+          $(".login").css('display','none')
+          $(".registered").css('display','none')
+          $("#loading").css('top','100%')
+        },2500)
+        
+        setTimeout(()=>{
+          location.href="http://localhost:8080/genshinLife/home.html"
+        },3000)
+      } else {
+        ErrMsg('用户名或密码错误')
+      }
+    } else {
+      ErrMsg('该用户名不存在')
+    }
+  })
+
+  //注册机制 存入localStorage
+  $("#registered").click(()=>{
+    console.log(registeredUserName.val())
+    if (registeredUserName.val().length<=8 || registeredUserName.val().length>=15){
+      ErrMsg('用户名的长度应在8到15位')
+    } else if (registeredPassWord.val().length<=8 || registeredPassWord.val().length>=18){
+      ErrMsg('密码的长度应在8到18位')
+    } else {
+      if(registeredUserName.val() in window.localStorage){
+        ErrMsg('用户名已存在')
+      } else {
+        window.localStorage.setItem(registeredUserName.val(),registeredPassWord.val())
+        TrueMsg('注册成功')
+      }
+    }
+    
+  })
+
+
+
+  //测试
+  $("#test").click(function(){
+    // cunt++
+    // option.content+=cunt
+    // WfMsg(option)
+    
+    // console.log(window.localStorage[loginUserName.val()])
+  })
+
+
+</script>
