@@ -10,7 +10,7 @@ function topTo(){
     },2500)
     if(where == 'in'){
       setTimeout(()=>{
-        location.href = "http://localhost:8080/genshinLife/" + to
+        location.href = "https://travelless.github.io/genshinLife/" + to
       },3000)
     } else {
       setTimeout(()=>{
