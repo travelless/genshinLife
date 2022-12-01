@@ -43,15 +43,5 @@ function cookieCheck () {
    } else {
      $("#userSpace").html('游客')
      $(".downLine").html('登录')
-     $(".downLine").click(()=>{
-       $("#loading").css('top','0')
-       setTimeout(()=>{
-        thePart.css('display','none')
-         $("#loading").css('top','100%')
-       },2500)
-       setTimeout(()=>{
-         location.href="http://localhost:8080/genshinLife/index.html"
-       },3000)
-     })
    }
 }

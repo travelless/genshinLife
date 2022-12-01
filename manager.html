@@ -25,13 +25,11 @@
         <li class="navshow"><a to="home.html">主页</a></li>
         <li class="navshow"><a to="collection.html">图鉴</a></li>
         <li class="navshow"><a to="discussion.html">论坛</a></li>
-        <li class="navshow"><a to="manager.html">管理员界面</a></li>
-        <li class="navshow"><a id="test">test</a></li>
       </div>
       <div class="top-barrer-user">
         <div id="userSpace"></div>
         <div class="userIcon"></div>
-        <div class="downLine"></div>
+        <div class="downLine" to="index.html"></div>
       </div>
     </div>
     <div class="form">
@@ -162,6 +160,34 @@
   window.onload = function(){
     cookieCheck()
     topTo()
+
+    // fetch.API
+    fetch('./data.json').then((res)=>res.json()).then((res)=>{
+      console.log(res)
+      res.a='name'
+      console.log(res)
+    })
+    // //我的评价是不如ajax
+
+    // AJAX
+    // $.ajax({
+    //   type:'GET',
+    //   url:'./data.json',
+    //   data:'1',
+    //   success:(res)=>{
+    //     console.log('AJAX的json请求结果')
+    //     console.log(res)
+    //   },
+    //   dataType:'json'
+    // })
+
+
+    // let fs = require('fs')
+    // fs.readFile('./data.json','utf-8',(err,data)=>{
+    //   if(err) throw err
+    //   var data = JSON.parse(data)
+    //   console.log(data)
+    // })
   }
 </script>
 
