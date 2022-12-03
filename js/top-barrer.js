@@ -14,7 +14,7 @@ function topTo(){
 
   $("a").click(function(){
     var to = $(this).attr('to')
-    var where = $(this).attr('where')
+    // var where = $(this).attr('where')
     $("#loading").css('top','0')
     setTimeout(()=>{
       thePart.css('display','none')

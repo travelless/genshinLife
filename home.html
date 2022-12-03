@@ -5,6 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>记录原神生活</title>
+    <!-- normalize.css -->
+    <link rel="stylesheet" href="./css/normalize.css">
     <!-- jq库 -->
     <script src="./js/jq.js"></script>
     <!-- cookie库 -->
@@ -29,7 +31,6 @@
           <li class="navshow"><a to="collection.html" where="in">图鉴</a></li>
           <li class="navshow"><a to="discussion.html" where="in">论坛</a></li>
           <li class="navshow"><a to="manager.html" where="in">管理员界面</a></li>
-          <li class="navshow"><a id="test">test</a></li>
         </div>
         <div class="top-barrer-user">
           <div id="userSpace"></div>
@@ -37,39 +38,6 @@
           <div class="downLine"></div>
         </div>
       </div>
-      <!-- 轮播图 -->
-      <!-- <div class="carouselChart">
-        <div class="imgs">
-          <div class="imgitem">
-            <img src="img/miYo.png">
-          </div>
-          <div class="imgitem">
-            <img src="img/nilu.jpg">
-          </div>
-          <div class="imgitem">
-            <img src="img/offical.jpeg">
-          </div>
-          <div class="imgitem">
-            <img src="img/pic1.jpg">
-          </div>
-        
-          <div class="imgitem">
-            <img src="img/pic2.jpg">
-          </div>
-          <div class="imgitem">
-            <img src="img/t2.png">
-          </div>
-          <div class="imgitem">
-            <img src="img/t3.png">
-          </div>
-          <div class="imgitem">
-            <img src="img/t4.png">
-          </div>
-          
-        </div>
-        <button id="pre" type="button">上</button>
-        <button id="next" type="button">下</button>
-      </div> -->
       <div class="page">
         <div class="leftPart">
             <ul class="newList">
@@ -470,12 +438,11 @@ li>.sayWhat{
   }
   .midLine{
     top: 16vh;
-    border:2px rgba(0,0,0,.5);
     height: 60vh;
     position: absolute;
     right: 40%;
     /* width: 1px; */
-    border-style: none solid none none;
+    border-right: 2px solid rgba(0,0,0,.3);
   }
   .rightPart{ 
     position: absolute;

@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <!-- normalize.css -->
+  <link rel="stylesheet" href="./css/normalize.css">
   <!-- jq库 -->
   <script src="./js/jq.js"></script>
   <!-- cookie库 -->
@@ -26,6 +27,7 @@
         <li class="navshow"><a to="home.html">主页</a></li>
         <li class="navshow"><a to="collection.html">图鉴</a></li>
         <li class="navshow"><a to="discussion.html">论坛</a></li>
+        <li class="navshow"><a to="manager.html">管理员界面</a></li>
       </div>
       <div class="top-barrer-user">
         <div id="userSpace"></div>
@@ -35,16 +37,7 @@
     </div>
     <div class="role">
       <div class="title">角色图鉴</div>
-      <ul id="list">
-        <li class="li">
-          <a href="showRole.html" class="img"></a>
-          <a href="showRole.html" class="name">神里凌华</a>
-        </li>
-        <li class="li">
-          <img src="./img/miYo.png" alt="神里凌华">
-          <div class="name">枫源万叶</div>
-        </li>
-      </ul>
+      <ul id="list"></ul>
     </div>
   </div>
   <div id="loading">
@@ -65,7 +58,33 @@
 </body>
 
 </html>
+<script>
+  window.onload = function(){
 
+    //角色动态遍历生成图鉴
+
+    //获取角色信息库
+    var roleDataBase = JSON.parse(window.localStorage.roleDataBase) 
+    var length = Object.keys(roleDataBase).length
+    var reader = new FileReader();
+
+    for(let i in roleDataBase){
+      $("#list").append('<li class="li" name="'+ roleDataBase[i].name + '"><a to="showRole.html" class="name"><img class="img" src="'+roleDataBase[i].headshot +'"></img>'+roleDataBase[i].name +'</a></li>')
+      $("[name='"+ roleDataBase[i].name + "']").children(".img").attr("background","src("+ roleDataBase[i].headshot +")")
+      console.log(roleDataBase[i].name)
+      $("[name='"+ roleDataBase[i].name + "']").children("a").click(()=>{
+        console.log(roleDataBase[i].name)
+        setCookie("showRole", roleDataBase[i].name , 1)
+      })
+    }
+
+    
+
+    cookieCheck()
+    topTo()
+  }
+  
+</script>
 
 <style>
   *{
@@ -77,10 +96,8 @@
     text-align: center;
   }
   .img{
-    background: url(./img/nilu.jpg);
-    background-size: 100% 100%;
     width: 100%;
-    height: 100%;
+    height: 90%;
     box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
     border-radius: 10px;
   }
@@ -96,18 +113,17 @@
     margin: 2.5%;
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
     text-align: center;
     padding: 20px;
+    transition: 0.5s;
+  }
+  .li:hover{
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+    border-radius: 5px;
   }
   #list{ 
     display: flex;
     flex-wrap: wrap;
   }
   </style>
-  <script>
-    window.onload = function(){
-      cookieCheck()
-      topTo()
-    }
-  </script>
+  

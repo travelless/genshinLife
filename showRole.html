@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- normalize.css -->
+    <link rel="stylesheet" href="./css/normalize.css">
     <!-- jq库 -->
     <script src="./js/jq.js"></script>
     <!-- cookie库 -->
@@ -19,78 +21,97 @@
   <title>Document</title>
 </head>
 <body>
+  <div class="top-barrer">
+    <div class="right-info">
+      <li class="navshow"><a to="home.html">主页</a></li>
+      <li class="navshow"><a to="collection.html">图鉴</a></li>
+      <li class="navshow"><a to="discussion.html">论坛</a></li>
+      <li class="navshow"><a to="manager.html" where="in">管理员界面</a></li>
+    </div>
+    <div class="top-barrer-user">
+      <div id="userSpace"></div>
+      <div class="userIcon"></div>
+      <div class="downLine"></div>
+    </div>
+  </div>
   <div class="showRole">
-    <h1>角色名</h1>
+    <h1>角色图鉴</h1>
     <div class="form">
       <div class="left">
-        <div class="features">
-          <label>角色名称</label>
-          <div>name</div>
+        <div class="features name">
+          <label>角色名称:</label>
+          <div id="name"></div>
         </div>
         <div class="features">
-          <label>攻击力</label>
-          <div>name</div>
+          <label>攻击力:</label>
+          <div id="strength"></div>
         </div>
         <div class="features">
-          <label>暴击率</label>
-          <div>name</div>
+          <label>暴击率:</label>
+          <div id="critChance"></div>
         </div>
         <div class="features">
-          <label>元素精通</label>
-          <div>name</div>
+          <label>元素精通:</label>
+          <div id="elementMaster"></div>
         </div>
         <div class="features">
-          <label>受治疗加成</label>
-          <div>name</div>
+          <label>受治疗加成:</label>
+          <div id="healedLevel"></div>
         </div>
         <div class="features">
-          <label>增伤</label>
-          <select name="" id="">
-            <option value="">火元素伤害加成</option>
-            <option value="">水元素伤害加成</option>
-            <option value="">岩元素伤害加成</option>
-            <option value="">冰元素伤害加成</option>
-            <option value="">草元素伤害加成</option>
-            <option value="">风元素伤害加成</option>
-            <option value="">物理伤害加成</option>
-          </select>
-          <div>name</div>
+          <label id="attackType">增伤:</label>
+          <div id="attackBonus"></div>
         </div>
       </div>
+      <div class="midLine"></div>
       <div class="right">
-          
         <div class="features">
-          <label>生命值</label>
-          <div>name</div>
+          <img id="headshot"></img>
+        </div>
+
+        <div class="features">
+          <label>生命值:</label>
+          <div id="health"></div>
         </div>
         
         <div class="features">
-          <label>防御力</label>
-          <div>name</div>
+          <label>防御力:</label>
+          <div id="defense"></div>
         </div>
         
         <div class="features">
-          <label>暴击伤害</label>
-          <div>name</div>
+          <label>暴击伤害:</label>
+          <div id="critDamage"></div>
         </div>
         
         <div class="features">
-          <label>治疗加成</label>
-          <div>name</div>
+          <label>治疗加成:</label>
+          <div id="healLevel"></div>
         </div>
         
         <div class="features">
-          <label>元素充能效率</label>
-          <div>name</div>
+          <label>元素充能效率:</label>
+          <div id="elementCharge"></div>
         </div>
         
-        <div class="features">
-          <label>角色头像</label>
-          <div>name</div>
-        </div>
+        
       </div>
 
 
+      </div>
+  </div>
+  <div id="loading">
+    <div id="loading-center">
+      <div id="loading-center-absolute">
+        <div class="object" id="object_one"></div>
+        <div class="object" id="object_two"></div>
+        <div class="object" id="object_three"></div>
+        <div class="object" id="object_four"></div>
+        <div class="object" id="object_five"></div>
+        <div class="object" id="object_six"></div>
+        <div class="object" id="object_seven"></div>
+        <div class="object" id="object_eight"></div>
+        <div class="object" id="object_big"></div>
       </div>
     </div>
   </div>
@@ -99,41 +120,90 @@
 
 
 <script>
-
+  window.onload = ()=>{
+    //接收角色具体信息
+    var roleName = getCookie("showRole")
+    var theRole = JSON.parse(window.localStorage.roleDataBase)[roleName]
+    // console.log(theRole)
+    $("#name").html(theRole.name)
+    $("#health").html(theRole.health)
+    $("#strength").html(theRole.strength)
+    $("#defense").html(theRole.defense)
+    $("#critChance").html(theRole.critChance)
+    $("#critDamage").html(theRole.critDamage)
+    $("#elementMaster").html(theRole.elementMaster)
+    $("#healLevel").html(theRole.healLevel)
+    $("#healedLevel").html(theRole.healedLevel)
+    $("#elementCharge").html(theRole.elementCharge)
+    $("#attcktype").html(theRole.attcktype)
+    $("#attackBonus").html(theRole.attackBonus)
+    $("#headshot").attr("src",theRole.headshot)
+    cookieCheck()
+    topTo()
+  }
 </script>
 
 <style>
-
-.showRole{
-  margin-left: 10%;
-  width: 80%;
-  height: 80vh;
-  box-shadow: 0px 0px 5px rgba(0,0,0,0.8);
-  text-align: center;
-}
-.left{
-  position: absolute;
-  width: 20%;
-  left: 20%;
-}
-.right{
-  width: 20%;
-  position: absolute;
-  right: 20%;
-}
-.structure{ 
-  /* margin-left: 15%; */
-  display: flex;
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-.features{
-  margin-left: 10%;
-  display: flex;
-  margin-top: 10px;
+  .midLine{
+    top: 30%;
+    position: absolute;
+    left: 50%;
+    height: 50%;
+    width: 1px;
+    border-right: 2px solid rgba(0,0,0,.3);
   }
-.features>div{
-  margin-left: 20px;
-}
-.features>label{
-  height: 20px;
-}
+  h1{
+    margin: 5%;
+  }
+  img{
+    width: 14vh;
+    height: 17vh;
+  }
+  .name{
+    position: relative;
+    top: 5vh;
+    margin: 13vh 0;
+  }
+  .showRole{
+    padding: 1px;
+    margin-top: 5%;
+    margin-left: 20%;
+    width: 60%;
+    height: 80vh;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.8);
+    text-align: center;
+  }
+  .left{
+    padding: 1px;
+    top: 30%;
+    position: absolute;
+    width: 20%;
+    left: 30%;
+  }
+  .right{
+    top: 25%;
+    width: 20%;
+    position: absolute;
+    right: 20%;
+  }
+  .structure{ 
+    /* margin-left: 15%; */
+    display: flex;
+    }
+  .features{
+    margin-left: 10%;
+    display: flex;
+    margin-top: 10%;
+    }
+  .features>div{
+    margin-left: 20px;
+  }
+  .features>label{
+    height: 20px;
+  }
 </style>

@@ -5,6 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>管理员页面</title>
+    <!-- normalize.css -->
+    <link rel="stylesheet" href="./css/normalize.css">
     <!-- jq库 -->
     <script src="./js/jq.js"></script>
     <!-- cookie库 -->
@@ -25,6 +27,7 @@
         <li class="navshow"><a to="home.html">主页</a></li>
         <li class="navshow"><a to="collection.html">图鉴</a></li>
         <li class="navshow"><a to="discussion.html">论坛</a></li>
+        <li class="navshow"><a to="manager.html" where="in">管理员界面</a></li>
       </div>
       <div class="top-barrer-user">
         <div id="userSpace"></div>
@@ -33,8 +36,8 @@
       </div>
     </div>
     <div class="form">
-      <div class="collection-role">
-        <div class="title">角色图鉴</div>
+      <div class="doRole">
+        <div class="title">增加角色</div>
         <div class="structure">
           <div class="features">
             <label>角色名称</label>
@@ -42,90 +45,85 @@
           </div>
           <div class="features">
             <label>生命值</label>
-            <input type="text" id="name">
+            <input type="text" id="health">
           </div>
         </div>
         <div class="structure">
           <div class="features">
             <label>攻击力</label>
-            <input type="text" id="name">
+            <input type="text" id="strength">
           </div>
           <div class="features">
             <label>防御力</label>
-            <input type="text" id="name">
+            <input type="text" id="defense">
           </div>
         </div>
         <div class="structure">
           <div class="features">
             <label>暴击率</label>
-            <input type="text" id="name">
+            <input type="text" id="critChance">
           </div>
           <div class="features">
             <label>暴击伤害</label>
-            <input type="text" id="name">
+            <input type="text" id="critDamage">
           </div>
         </div>
         <div class="structure">
           <div class="features">
             <label>元素精通</label>
-            <input type="text" id="name">
+            <input type="text" id="elementMaster">
           </div>
           <div class="features">
             <label>治疗加成</label>
-            <input type="text" id="name">
+            <input type="text" id="healLevel">
           </div>
         </div>
         <div class="structure">
           <div class="features">
             <label>受治疗加成</label>
-            <input type="text" id="name">
+            <input type="text" id="healedLevel">
           </div>
           <div class="features">
             <label>元素充能效率</label>
-            <input type="text" id="name">
+            <input type="text" id="elementCharge">
           </div>
         </div>
         <div class="structure">
           <div class="features">
-            <label for="">增伤</label>
-            <select name="" id="">
-              <option value="">火元素伤害加成</option>
-              <option value="">水元素伤害加成</option>
-              <option value="">岩元素伤害加成</option>
-              <option value="">冰元素伤害加成</option>
-              <option value="">草元素伤害加成</option>
-              <option value="">风元素伤害加成</option>
-              <option value="">物理伤害加成</option>
+            <label>增伤</label>
+            <select id="attackType">
+              <option value="fire">火元素伤害加成</option>
+              <option value="water">水元素伤害加成</option>
+              <option value="rock">岩元素伤害加成</option>
+              <option value="ice">冰元素伤害加成</option>
+              <option value="grass">草元素伤害加成</option>
+              <option value="wind">风元素伤害加成</option>
+              <option value="physics">物理伤害加成</option>
             </select>
-            <input type="text">
+            <input type="text" id="attackBonus">
           </div>
           <div class="features">
             <label>角色头像</label>
-            <input type="file" id="name">
+            <input type="file" id="headshot">
+            <img  id="showHead"  src="" alt="">
           </div>
         </div>
+        <div>
+          <button id="commit" class="btn">提交</button>
+        </div>
       </div>
-      <div class="leadNews">
-        <div class="title">主页资讯</div>
+    </div>
+    <div class="form">
+      <div class="doRole">
+        <div class="title">删除角色</div>
         <div class="structure">
           <div class="features">
-            <label>资讯简介</label>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <label>角色名</label>
+            <input type="text" id="delName">
           </div>
-          <div class="features">
-            <label>资讯封面</label>
-            <input type="file" id="name">
-          </div>
+          <button class="delRole" >删除角色</button>
+          <button class="clearAll" >清空角色</button>
         </div>
-        <div class="features">
-          <div class="features">
-            <label>资讯主要内容</label>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
-          </div>
-        </div>
-      </div>
-      <div class="coserPost">
-        
       </div>
     </div>
   </div>
@@ -153,6 +151,34 @@
 <script>
   var submit = document.querySelector("#submit")
   var check = document.querySelector("#check")
+  var canCommit = false
+  var newRole = {
+    name:'',
+    health:'',
+    strength:'',
+    defense:'',
+    critChance:'',
+    critDamage:'',
+    elementMaster:'',
+    healLevel:'',
+    healedLevel:'',
+    elementCharge:'',
+    attackType:'',
+    attackBonus:'',
+    headshot:''
+  }
+
+  
+  function isReady(obj){
+      for (var name in obj){
+        if(!obj[name]){
+          return false;
+        }
+      }
+      return true;
+  };
+
+
   // submit.onclick = function() {
   //   var name = document.querySelector("#name").value
   //   localStorage.setItem('name',name)
@@ -160,13 +186,77 @@
   window.onload = function(){
     cookieCheck()
     topTo()
-
-    // fetch.API
-    fetch('./data.json').then((res)=>res.json()).then((res)=>{
-      console.log(res)
-      res.a='name'
-      console.log(res)
+    
+    //显示照片
+    var reader = new FileReader();
+    $("#headshot").change((e)=>{
+      var file = e.currentTarget.files[0]
+      reader.readAsDataURL(file)
+      reader.addEventListener("load", () => {
+        // console.log(reader.result)
+        $("#showHead").attr("src",reader.result)
+        newRole.headshot = reader.result
+      }, false);
     })
+
+    //增加角色
+    $("#commit").click(()=>{
+      newRole.name = $("#name").val()
+      newRole.health = $("#health").val()
+      newRole.strength = $("#strength").val()
+      newRole.defense = $("#defense").val()
+      newRole.critChance = $("#critChance").val()
+      newRole.critDamage = $("#critDamage").val()
+      newRole.elementMaster = $("#elementMaster").val()
+      newRole.healLevel = $("#healLevel").val()
+      newRole.healedLevel = $("#healedLevel").val()
+      newRole.elementCharge = $("#elementCharge").val()
+      newRole.attackType = $("#attackType").val()
+      newRole.attackBonus = $("#attackBonus").val()
+      
+      if(!isReady(newRole)){
+        ErrMsg('请完善表单信息')
+      } else {
+        //获取角色信息库
+        var roleDataBase = JSON.parse(window.localStorage.roleDataBase)
+        //添加角色信息
+        roleDataBase[newRole.name] = newRole
+        var roleDataBaseToJSON = JSON.stringify(roleDataBase)
+        window.localStorage.setItem("roleDataBase",roleDataBaseToJSON)
+        TrueMsg('角色信息录入成功')
+      }
+    })
+
+    //删除角色
+    $(".delRole").click(()=>{
+      var delName = $("#delName").val()
+      var roleDataBase = JSON.parse(window.localStorage.roleDataBase)
+      if(roleDataBase[delName]){
+        // console.log(roleDataBase[delName])
+        delete roleDataBase[delName]
+        var roleDataBase = JSON.stringify(roleDataBase)
+        window.localStorage.setItem("roleDataBase",roleDataBase)
+        TrueMsg("删除成功")
+      } else {
+        ErrMsg("该角色不存在")
+      }
+    })
+
+    //清空角色
+    $(".clearAll").click(()=>{
+      var newDataBase = {}
+      newDataBase = JSON.stringify(newDataBase)
+      window.localStorage.setItem("roleDataBase",newDataBase)
+      TrueMsg("清空成功")
+    })
+
+    //关于改写本地json文件的尝试----失败---->使用localStorage
+    // fetch.API
+    // fetch('./data.json').then((res)=>res.json()).then((res)=>{
+    //   console.log(res)
+    //   res.a='name'
+    //   console.log(res)
+    // })
     // //我的评价是不如ajax
 
     // AJAX
@@ -181,13 +271,12 @@
     //   dataType:'json'
     // })
 
-
-    // let fs = require('fs')
     // fs.readFile('./data.json','utf-8',(err,data)=>{
     //   if(err) throw err
     //   var data = JSON.parse(data)
     //   console.log(data)
     // })
+  
   }
 </script>
 
@@ -197,6 +286,61 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+  img{
+    width: 100px;
+    height: 100px;
+  }
+  button{
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    margin: 10px 2vh;
+    border: none;
+    height: 4vh;
+    color: white;
+    width: 15%;
+    overflow: hidden;
+    background-color: rgb(75,112,226);
+    /* box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.397); */
+    transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    border-radius: 15px;
+  }
+  .delRole:hover{
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 4px rgba(102,175,233)
+  }
+  .delRole:active{
+    background-color: rgba(75,112,226,.7);
+  }
+  .clearAll:hover{
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 4px rgba(102,175,233)
+  }
+  .clearAll:active{
+    background-color: rgba(75,112,226,.7);
+  }
+  .btn{
+    position: relative;
+    width: 15%;
+    height: 4vh;
+    left: 40%;
+    border: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    color: white;
+    background-color: rgb(75,112,226);
+    /* box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.397); */
+    transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    border-radius: 15px;
+  }
+  .btn:hover{
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 4px rgba(102,175,233)
+  }
+  .btn:active{
+    background-color: rgba(75,112,226,.7);
   }
   .structure{ 
     margin: 2% 5%;
@@ -212,7 +356,7 @@
     margin-top: 2vh;
     text-align: center;
   }
-  .collection-role,.leadNews{ 
+  .doRole,.leadNews{ 
     box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
     width: 70%;
     margin-left: 15%;

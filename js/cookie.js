@@ -37,7 +37,7 @@ function cookieCheck () {
          $("#loading").css('top','100%')
        },2500)
        setTimeout(()=>{
-         location.href="http://localhost:8080/genshinLife/index.html"
+         location.href="/genshinLife/index.html"
        },3000)
      })
    } else {
